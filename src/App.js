@@ -8,7 +8,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload. BEST GROUP EVER SOON
+          Edit <code>src/App.js</code> and save to reload. GEST GROUP EVER. WERE CONNECTED!
         </p>
         <a
           className="App-link"
