@@ -10,7 +10,7 @@ import LogOut from "./components/LogOut";
 // import "./App.css";
 
 
-const App = () => {
+const App = (props) => {
   const [state, setState] = useState({
     email: "",
     password: "",
@@ -34,6 +34,7 @@ const App = () => {
       isLoggedIn: false,
     });
     localStorage.clear();
+    props.history.push('/');
   };
 
   const handleInput = (event) => {
