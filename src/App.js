@@ -34,7 +34,7 @@ const App = (props) => {
       isLoggedIn: false,
     });
     localStorage.clear();
-    props.history.push('/');
+    // props.history.push('/');
   };
 
   const handleInput = (event) => {
@@ -109,7 +109,7 @@ const App = (props) => {
             }}
           />
           <Route
-            path="/"
+            path="/restaurants"
             render={(props) => {
               return (
               <RestaurantList isLoggedIn={isLoggedIn} />
