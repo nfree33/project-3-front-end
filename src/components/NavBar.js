@@ -1,4 +1,6 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
+
 // import "./NavBar.css";
 
 function NavBar(props) {
@@ -42,4 +44,4 @@ function NavBar(props) {
   );
 }
 
-export default NavBar;
+export default withRouter(NavBar);
