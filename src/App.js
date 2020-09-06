@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, withRouter } from "react-router-dom";
 import axios from "axios";
 
 import NavBar from "./components/NavBar";
@@ -51,6 +51,8 @@ const App = (props) => {
       console.log(response);
       localStorage.token = response.data.token;
       setIsLoggedIn(true);
+      props.history.push('/restaurants');
+
     } catch (err) {
       console.log(err);
     }
@@ -66,6 +68,7 @@ const App = (props) => {
       });
       localStorage.token = response.data.token;
       setIsLoggedIn(true);
+      props.history.push('/restaurants');
     } catch (error) {
       console.log(error);
     }
@@ -92,7 +95,11 @@ const App = (props) => {
             path="/logout"
             render={(props) => {
               return (
-                <LogOut isLoggedIn={isLoggedIn} handleLogOut={handleLogOut} />
+                <LogOut 
+                isLoggedIn={isLoggedIn} 
+                handleLogOut={handleLogOut} 
+                />
+                
               );
             }}
           />
@@ -109,7 +116,7 @@ const App = (props) => {
             }}
           />
           <Route
-            path="/"
+            path="/restaurants"
             render={(props) => {
               return (
               <RestaurantList isLoggedIn={isLoggedIn} />
@@ -123,4 +130,4 @@ const App = (props) => {
     </div>
   );
 };
-export default App;
+export default withRouter(App);
