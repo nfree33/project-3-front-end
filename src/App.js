@@ -33,6 +33,7 @@ const App = (props) => {
       password: "",
       isLoggedIn: false,
     });
+    setIsLoggedIn(false);
     localStorage.clear();
     props.history.push('/');
   };
@@ -71,6 +72,15 @@ const App = (props) => {
       props.history.push('/restaurants');
     } catch (error) {
       console.log(error);
+      let userChoice;
+      userChoice = prompt(`Are you already a member (yes) || (no)?`)
+      if (userChoice === 'yes'){
+          alert('Did you mistype your email?')
+      }
+      else if (userChoice === 'no'){
+          alert(`Oh... Sign up then!`);
+          props.history.push('/signup');
+      }
     }
   };
   return (
