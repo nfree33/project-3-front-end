@@ -3,7 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import axios from "axios";
 
 import NavBar from "./components/NavBar";
-// import DogList from "./components/DogList/DogList";
+import RestaurantList from "./components/RestaurantList";
 import SignUpForm from "./components/SignUpForm";
 import LogInForm from "./components/LogInForm";
 import LogOut from "./components/LogOut";
@@ -110,9 +110,11 @@ const App = (props) => {
           />
           <Route
             path="/"
-            render={() => {
-              return 
-              // <DogList isLoggedIn={isLoggedIn} />;
+            render={(props) => {
+              return (
+              <RestaurantList isLoggedIn={isLoggedIn} />
+              )
+
             }}
           />
         </Switch>
