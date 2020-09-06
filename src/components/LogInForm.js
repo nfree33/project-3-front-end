@@ -3,7 +3,7 @@ import React from "react";
 function LogInForm(props) {
   return (
     <div>
-      <h2>Log In</h2>
+      <h2>Log In to FOOdBAR</h2>
 
       <form>
         <div>
