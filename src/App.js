@@ -7,6 +7,8 @@ import RestaurantList from "./components/RestaurantList";
 import SignUpForm from "./components/SignUpForm";
 import LogInForm from "./components/LogInForm";
 import LogOut from "./components/LogOut";
+import UserShow from "./components/UserShow";
+import UserList from "./components/UserList";
 // import "./App.css";
 
 
@@ -106,6 +108,29 @@ const App = (props) => {
             render={(props) => {
               return (
                 <LogOut 
+                isLoggedIn={isLoggedIn} 
+                handleLogOut={handleLogOut} 
+                />
+                
+              );
+            }}
+          />
+          <Route
+            path="/allusers"
+            render={(props) => {
+              return (
+                <UserList 
+                isLoggedIn={isLoggedIn} 
+                />
+                
+              );
+            }}
+          />
+          <Route
+            path="/profile"
+            render={(props) => {
+              return (
+                <UserShow 
                 isLoggedIn={isLoggedIn} 
                 handleLogOut={handleLogOut} 
                 />
