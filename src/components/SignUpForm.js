@@ -9,16 +9,16 @@ function SignUpForm(props) {
 
       <form>
       <div>
-          <label htmlFor="name">Name</label>
+          <label htmlFor="name">Name </label>
           <input type="text" name="name" onChange={props.handleInput} />
         </div>
         <div>
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email">Email </label>
           <input type="text" name="email" onChange={props.handleInput} />
         </div>
 
         <div>
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">Password </label>
           <input type="password" name="password" onChange={props.handleInput} />
         </div>
         <input value="Submit" type="submit" onClick={props.handleSignUp} />
