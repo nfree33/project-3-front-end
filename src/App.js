@@ -9,11 +9,13 @@ import LogInForm from "./components/LogInForm";
 import LogOut from "./components/LogOut";
 import UserShow from "./components/UserShow";
 import UserList from "./components/UserList";
+import UserEdit from "./components/UserEdit";
 // import "./App.css";
 
 
 const App = (props) => {
   const [state, setState] = useState({
+    name: "",
     email: "",
     password: "",
     isLoggedIn: false,
@@ -31,6 +33,7 @@ const App = (props) => {
 
   const handleLogOut = () => {
     setState({
+      name: "",
       email: "",
       password: "",
       isLoggedIn: false,
@@ -48,6 +51,7 @@ const App = (props) => {
     event.preventDefault();
     try {
       const response = await axios.post("http://localhost:3001/users/signup", {
+        name: state.name,
         email: state.email,
         password: state.password,
       });
@@ -133,6 +137,17 @@ const App = (props) => {
                 <UserShow 
                 isLoggedIn={isLoggedIn} 
                 handleLogOut={handleLogOut} 
+                />
+                
+              );
+            }}
+          />
+          <Route
+            path="/${_id}/edit"
+            render={(props) => {
+              return (
+                <UserEdit 
+                isLoggedIn={isLoggedIn} 
                 />
                 
               );
