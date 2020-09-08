@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useReducer } from "react";
 import { withRouter } from "react-router-dom";
 
 // import "./NavBar.css";
@@ -11,24 +11,35 @@ function NavBar(props) {
   ];
   if (props.isLoggedIn) {
     navBarItems.push(
-        <li key={3}>
+        <li key={2}>
           <a href="/restaurants">Restaurants</a>
         </li>
       );
+      navBarItems.push(
+        <li key={3}>
+          <a href="/profile">Profile</a>
+        </li>
+      );
+
+      navBarItems.push(
+        <li key={4}>
+          <a href="/allusers">All Users</a>
+        </li>
+      );
     navBarItems.push(
-      <li key={2}>
+      <li key={5}>
         <a href="/logout">Log Out</a>
       </li>
     );
 
   } else {
     navBarItems.push(
-      <li key={4}>
+      <li key={6}>
         <a href="/signup">Sign Up</a>
       </li>
     );
     navBarItems.push(
-      <li key={5}>
+      <li key={7}>
         <a href="/login">Log In</a>
       </li>
     );
