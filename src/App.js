@@ -21,7 +21,8 @@ const App = (props) => {
   const [state, setState] = useState({
     name: "",
     email: "",
-    password: ""
+    password: "",
+    id: ""
   });
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -29,7 +30,9 @@ const App = (props) => {
   useEffect(() => {
     if (localStorage.token && localStorage.email) {
       setIsLoggedIn(true);
-      setState({...state, email: localStorage.email})
+      // decode the token, grab the id out of it:
+      const decodedToken = JSON.parse(atob(localStorage.token.split(".")[1]))
+      setState({...state, email: localStorage.email, id: decodedToken.id})
     } else {
       setIsLoggedIn(false);
     }
@@ -61,6 +64,9 @@ const App = (props) => {
       console.log(response);
       localStorage.token = response.data.token;
       localStorage.email = state.email;
+      // decode the token, grab the id out of it:
+      const decodedToken = JSON.parse(atob(response.data.token.split(".")[1]))
+      setState({...state, id: decodedToken.id})
       setIsLoggedIn(true);
       props.history.push('/restaurants');
 
@@ -79,7 +85,10 @@ const App = (props) => {
       });
       localStorage.token = response.data.token;
       localStorage.email = state.email;
+      // decode the token, grab the id out of it:
+      const decodedToken = JSON.parse(atob(response.data.token.split(".")[1]))
       setIsLoggedIn(true);
+      setState({...state, id: decodedToken.id})
       props.history.push('/restaurants');
     } catch (error) {
       console.log(error);
@@ -143,6 +152,7 @@ const App = (props) => {
                 <UserShow 
                 isLoggedIn={isLoggedIn} 
                 handleLogOut={handleLogOut} 
+                user={state}
                 />
                 
               );
