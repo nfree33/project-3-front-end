@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Merienda&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+
+body {
+    background:#ebc8b2;
+    // background: #6e757d;
+    color: black;
+}
+
+h1, h2, h4 {
+    text-align: center;
+}
+ h2 {
+    font-family: 'Merienda', cursive;
+
+
+ }
+
+nav {
+    background:#800000;
+    padding: 0 2px 0 2px;
+    text-align: center;
+    // height: 75px;
+  }
+
+nav a {
+    text-decoration: none;
+    color: white;
+    font-family: 'Lato', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+  }
+  
+  nav a:hover {
+    color: white;
+    font-weight: 800;
+  }
+
+nav li {
+    display: inline-flex;
+    justify-content: space-evenly;
+    margin: 20px;
+    width: 100px;
+
+  }
+
+  nav ul {
+    margin: 0px;
+  }
+
+    .jumbotron {
+        background-image:  
+        linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), 
+        url(/images/jumbotron.jpg);
+        width: 100%;
+        height: 400px;
+        position: relative;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        color:#800000;
+        text-align: center;
+        border: none;
+
+
+        h1 {
+            font-family: 'Merienda', cursive;
+            font-size: 70px;
+        }
+        h4 {
+            font-size: 30px;
+            font-family: 'Lato', sans-serif;
+            font-weight: bold;
+
+        }
+        // h1:hover {
+        //     color: black;
+        // }
+        // h4:hover {
+        //     color: black;
+        // }
+
+    }
+
+ .howitworks {
+     text-align: center;
+     color: #black;
+     h2 {
+        // font-family: 'Lato', sans-serif;
+
+         font-size: 50px;
+        //  font-weight: bold;
+         
+     }
+     p {
+        font-family: 'Lato', sans-serif;
+        font-weight: bold;
+        font-size: 25px;
+        text-align: center;
+     }
+
+
+
+
+}

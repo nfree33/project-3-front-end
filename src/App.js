@@ -1,16 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { Route, Switch, withRouter } from "react-router-dom";
 import axios from "axios";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import NavBar from "./components/NavBar";
 import RestaurantList from "./components/RestaurantList";
+import RestaurantShow from "./components/RestaurantShow";
 import SignUpForm from "./components/SignUpForm";
 import LogInForm from "./components/LogInForm";
 import LogOut from "./components/LogOut";
 import UserShow from "./components/UserShow";
 import UserList from "./components/UserList";
 import UserEdit from "./components/UserEdit";
-// import "./App.css";
+import Homepage from "./components/Homepage";
+
+
+import "./scss/styles.scss";
 
 
 const App = (props) => {
@@ -18,14 +23,17 @@ const App = (props) => {
     name: "",
     email: "",
     password: "",
-    isLoggedIn: false,
+    id: ""
   });
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
-    if (localStorage.token) {
+    if (localStorage.token && localStorage.email) {
       setIsLoggedIn(true);
+      // decode the token, grab the id out of it:
+      const decodedToken = JSON.parse(atob(localStorage.token.split(".")[1]))
+      setState({...state, email: localStorage.email, id: decodedToken.id})
     } else {
       setIsLoggedIn(false);
     }
@@ -35,8 +43,7 @@ const App = (props) => {
     setState({
       name: "",
       email: "",
-      password: "",
-      isLoggedIn: false,
+      password: ""
     });
     setIsLoggedIn(false);
     localStorage.clear();
@@ -57,6 +64,10 @@ const App = (props) => {
       });
       console.log(response);
       localStorage.token = response.data.token;
+      localStorage.email = state.email;
+      // decode the token, grab the id out of it:
+      const decodedToken = JSON.parse(atob(response.data.token.split(".")[1]))
+      setState({...state, id: decodedToken.id})
       setIsLoggedIn(true);
       props.history.push('/restaurants');
 
@@ -74,8 +85,12 @@ const App = (props) => {
         password: state.password,
       });
       localStorage.token = response.data.token;
+      localStorage.email = state.email;
+      // decode the token, grab the id out of it:
+      const decodedToken = JSON.parse(atob(response.data.token.split(".")[1]))
       setIsLoggedIn(true);
-      props.history.push('/restaurants');
+      setState({...state, id: decodedToken.id})
+      props.history.push('/profile');
     } catch (error) {
       console.log(error);
       let userChoice;
@@ -90,7 +105,7 @@ const App = (props) => {
     }
   };
   return (
-
+   
     <div>
       <NavBar isLoggedIn={isLoggedIn} />
       <div className="body">
@@ -130,6 +145,7 @@ const App = (props) => {
               );
             }}
           />
+           
           <Route
             path="/profile"
             render={(props) => {
@@ -137,6 +153,7 @@ const App = (props) => {
                 <UserShow 
                 isLoggedIn={isLoggedIn} 
                 handleLogOut={handleLogOut} 
+                user={state}
                 />
                 
               );
@@ -166,18 +183,40 @@ const App = (props) => {
             }}
           />
           <Route
+            path="/restaurants/:id"
+            // component={RestaurantShow}
+            render={(props) => {
+              return (
+                <RestaurantShow isLoggedIn={isLoggedIn} user={state}  />
+              )
+            }}
+          />
+          <Route
             path="/restaurants"
             render={(props) => {
               return (
-              <RestaurantList isLoggedIn={isLoggedIn} />
+              <RestaurantList isLoggedIn={isLoggedIn} user={state}/>
               )
 
+            }}
+          />
+          <Route
+            path="/"
+            render={(props) => {
+              return (
+                <Homepage 
+                isLoggedIn={isLoggedIn} 
+                />
+                
+              );
             }}
           />
         </Switch>
       </div>
 
     </div>
+
+
   );
 };
 export default withRouter(App);

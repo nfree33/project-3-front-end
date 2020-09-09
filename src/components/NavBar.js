@@ -1,55 +1,56 @@
-import React, { useReducer } from "react";
-import { withRouter } from "react-router-dom";
+import React from "react";
+import { withRouter, Link } from "react-router-dom";
+import Navbar from 'react-bootstrap/Navbar';
+import { Jumbotron } from "react-bootstrap";
 
-// import "./NavBar.css";
 
 function NavBar(props) {
   let navBarItems = [
     <li key={1}>
-      <a href="/">Home</a>
+      <Link to="/">Home</Link>
     </li>,
   ];
   if (props.isLoggedIn) {
     navBarItems.push(
         <li key={2}>
-          <a href="/restaurants">Restaurants</a>
+          <Link to="/restaurants">Restaurants</Link>
         </li>
       );
       navBarItems.push(
         <li key={3}>
-          <a href="/profile">Profile</a>
+          <Link to="/profile">Profile</Link>
         </li>
       );
 
       navBarItems.push(
         <li key={4}>
-          <a href="/allusers">All Users</a>
+          <Link to="/allusers">All Users</Link>
         </li>
       );
     navBarItems.push(
       <li key={5}>
-        <a href="/logout">Log Out</a>
+        <Link to="/logout">Log Out</Link>
       </li>
     );
 
   } else {
     navBarItems.push(
       <li key={6}>
-        <a href="/signup">Sign Up</a>
+        <Link to="/signup">Sign Up</Link>
       </li>
     );
     navBarItems.push(
       <li key={7}>
-        <a href="/login">Log In</a>
+        <Link to="/login">Log In</Link>
       </li>
     );
   }
 
   return (
     <>
-      <h1>Restaurant Tracker</h1>
-      <nav>
+      <nav bg="dark">
          <ul>{navBarItems}</ul>
+        
       </nav>
     </>
   );

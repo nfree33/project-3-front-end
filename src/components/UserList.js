@@ -4,6 +4,7 @@ import UserShow from "./UserShow";
 
 const UserList = (props) => {
   console.log("=====UserList running======")
+  // const { name, email, photo, password, favorites } = user;
   const [users, setUsers] = useState([]);
   useEffect(() => {
     // Need to wrap this in an async function to use await inside:
@@ -13,12 +14,14 @@ const UserList = (props) => {
       setUsers(response.data);
     }
     fetchData();
-  }, []);
-  const showUsers = users.map((user, i) => {
     console.log(users)
+  }, []);
+
+  const showUsers = users.map((user, i) => {
     return (
       <div key={i}>
-        <UserShow user={user} isLoggedIn={props.isLoggedIn} />
+        <h1>Name: {user.name}</h1>
+        <img src={user.photo} alt="Add Profile Picture!"/>
       </div>
     );
   });
