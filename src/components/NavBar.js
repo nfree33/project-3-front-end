@@ -1,7 +1,8 @@
-import React, { useReducer } from "react";
+import React from "react";
 import { withRouter } from "react-router-dom";
+import Navbar from 'react-bootstrap/Navbar';
+import { Jumbotron } from "react-bootstrap";
 
-// import "./NavBar.css";
 
 function NavBar(props) {
   let navBarItems = [
@@ -47,9 +48,9 @@ function NavBar(props) {
 
   return (
     <>
-      <h1>Restaurant Tracker</h1>
-      <nav>
+      <nav bg="dark">
          <ul>{navBarItems}</ul>
+        
       </nav>
     </>
   );
