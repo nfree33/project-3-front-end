@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Route, Switch, withRouter } from "react-router-dom";
 import axios from "axios";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import NavBar from "./components/NavBar";
 import RestaurantList from "./components/RestaurantList";
@@ -11,7 +12,10 @@ import LogOut from "./components/LogOut";
 import UserShow from "./components/UserShow";
 import UserList from "./components/UserList";
 import UserEdit from "./components/UserEdit";
-// import "./App.css";
+import Homepage from "./components/Homepage";
+
+
+import "./scss/styles.scss";
 
 
 const App = (props) => {
@@ -110,7 +114,7 @@ const App = (props) => {
     }
   };
   return (
-
+   
     <div>
       <NavBar isLoggedIn={isLoggedIn} />
       <div className="body">
@@ -147,6 +151,17 @@ const App = (props) => {
                   isLoggedIn={isLoggedIn}
                 />
 
+              );
+            }}
+          />
+           <Route
+            path="/"
+            render={(props) => {
+              return (
+                <Homepage 
+                isLoggedIn={isLoggedIn} 
+                />
+                
               );
             }}
           />
@@ -213,6 +228,8 @@ const App = (props) => {
       </div>
 
     </div>
+
+
   );
 };
 export default withRouter(App);
