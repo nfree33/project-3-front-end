@@ -1,8 +1,8 @@
 import React from "react";
-// import "./RestaurantShow.css";
-import { useParams } from "react-router-dom"
-
-
+import "../scss/styles.scss";
+import { withRouter, useParams } from "react-router-dom";
+import Navbar from 'react-bootstrap/Navbar';
+import { Jumbotron } from "react-bootstrap";
 
 
 

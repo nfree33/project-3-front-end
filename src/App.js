@@ -13,8 +13,6 @@ import UserShow from "./components/UserShow";
 import UserList from "./components/UserList";
 import UserEdit from "./components/UserEdit";
 import Homepage from "./components/Homepage";
-
-
 import "./scss/styles.scss";
 
 
@@ -27,9 +25,9 @@ const App = (props) => {
   });
 
 
-/////////// Took the below from RestaurantList.js. 
-///////////
-///////////
+  /////////// Took the below from RestaurantList.js. 
+  ///////////
+  ///////////
   const [restaurants, setRestaurants] = useState([]);
   useEffect(() => {
     // Need to wrap this in an async function to use await inside:
@@ -40,11 +38,11 @@ const App = (props) => {
     }
     fetchData();
   }, []);
-///////////
-///////////
-///////////  
-  
-  
+  ///////////
+  ///////////
+  ///////////  
+
+
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
@@ -114,7 +112,7 @@ const App = (props) => {
     }
   };
   return (
-   
+
     <div>
       <NavBar isLoggedIn={isLoggedIn} />
       <div className="body">
@@ -154,14 +152,14 @@ const App = (props) => {
               );
             }}
           />
-           <Route
+          <Route
             path="/"
             render={(props) => {
               return (
-                <Homepage 
-                isLoggedIn={isLoggedIn} 
+                <Homepage
+                  isLoggedIn={isLoggedIn}
                 />
-                
+
               );
             }}
           />
@@ -205,10 +203,7 @@ const App = (props) => {
             render={(props) => {
               return (
                 <div>
-                  
-                  <h1>Your Collection of Restaurants</h1>
-                  <h3>Click the name to see that restuarants page!</h3>
-                <RestaurantList isLoggedIn={isLoggedIn} />
+                  <RestaurantList isLoggedIn={isLoggedIn} />
                 </div>
               )
 
@@ -220,7 +215,7 @@ const App = (props) => {
             render={(props) => {
               return (
                 <div>Welcome to the show page for!</div>
-                )
+              )
 
             }}
           />

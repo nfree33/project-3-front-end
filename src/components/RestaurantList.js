@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import RestaurantShow from "./RestaurantShow";
 
 const RestaurantList = (props) => {
   const [restaurants, setRestaurants] = useState([]);
