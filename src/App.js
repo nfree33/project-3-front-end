@@ -21,15 +21,15 @@ const App = (props) => {
   const [state, setState] = useState({
     name: "",
     email: "",
-    password: "",
-    isLoggedIn: false,
+    password: ""
   });
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
-    if (localStorage.token) {
+    if (localStorage.token && localStorage.email) {
       setIsLoggedIn(true);
+      setState({...state, email: localStorage.email})
     } else {
       setIsLoggedIn(false);
     }
@@ -39,8 +39,7 @@ const App = (props) => {
     setState({
       name: "",
       email: "",
-      password: "",
-      isLoggedIn: false,
+      password: ""
     });
     setIsLoggedIn(false);
     localStorage.clear();
@@ -61,6 +60,7 @@ const App = (props) => {
       });
       console.log(response);
       localStorage.token = response.data.token;
+      localStorage.email = state.email;
       setIsLoggedIn(true);
       props.history.push('/restaurants');
 
@@ -78,6 +78,7 @@ const App = (props) => {
         password: state.password,
       });
       localStorage.token = response.data.token;
+      localStorage.email = state.email;
       setIsLoggedIn(true);
       props.history.push('/restaurants');
     } catch (error) {
@@ -134,17 +135,7 @@ const App = (props) => {
               );
             }}
           />
-           <Route
-            path="/"
-            render={(props) => {
-              return (
-                <Homepage 
-                isLoggedIn={isLoggedIn} 
-                />
-                
-              );
-            }}
-          />
+           
           <Route
             path="/profile"
             render={(props) => {
@@ -187,6 +178,17 @@ const App = (props) => {
               <RestaurantList isLoggedIn={isLoggedIn} />
               )
 
+            }}
+          />
+          <Route
+            path="/"
+            render={(props) => {
+              return (
+                <Homepage 
+                isLoggedIn={isLoggedIn} 
+                />
+                
+              );
             }}
           />
         </Switch>
