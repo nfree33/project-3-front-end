@@ -14,7 +14,7 @@ function Homepage(props) {
     <Container className="howitworks">
               
         
-              <h2>How it works (not sure about this font) </h2>
+              <h2>How it works </h2>
 
               <br/>
               <div className="row" style={{color: 'black'}}>

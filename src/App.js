@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import NavBar from "./components/NavBar";
 import RestaurantList from "./components/RestaurantList";
+import RestaurantShow from "./components/RestaurantShow";
 import SignUpForm from "./components/SignUpForm";
 import LogInForm from "./components/LogInForm";
 import LogOut from "./components/LogOut";
@@ -22,14 +23,17 @@ const App = (props) => {
     name: "",
     email: "",
     password: "",
-    isLoggedIn: false,
+    id: ""
   });
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
-    if (localStorage.token) {
+    if (localStorage.token && localStorage.email) {
       setIsLoggedIn(true);
+      // decode the token, grab the id out of it:
+      const decodedToken = JSON.parse(atob(localStorage.token.split(".")[1]))
+      setState({...state, email: localStorage.email, id: decodedToken.id})
     } else {
       setIsLoggedIn(false);
     }
@@ -39,8 +43,7 @@ const App = (props) => {
     setState({
       name: "",
       email: "",
-      password: "",
-      isLoggedIn: false,
+      password: ""
     });
     setIsLoggedIn(false);
     localStorage.clear();
@@ -61,6 +64,10 @@ const App = (props) => {
       });
       console.log(response);
       localStorage.token = response.data.token;
+      localStorage.email = state.email;
+      // decode the token, grab the id out of it:
+      const decodedToken = JSON.parse(atob(response.data.token.split(".")[1]))
+      setState({...state, id: decodedToken.id})
       setIsLoggedIn(true);
       props.history.push('/restaurants');
 
@@ -78,7 +85,11 @@ const App = (props) => {
         password: state.password,
       });
       localStorage.token = response.data.token;
+      localStorage.email = state.email;
+      // decode the token, grab the id out of it:
+      const decodedToken = JSON.parse(atob(response.data.token.split(".")[1]))
       setIsLoggedIn(true);
+      setState({...state, id: decodedToken.id})
       props.history.push('/restaurants');
     } catch (error) {
       console.log(error);
@@ -134,17 +145,7 @@ const App = (props) => {
               );
             }}
           />
-           <Route
-            path="/"
-            render={(props) => {
-              return (
-                <Homepage 
-                isLoggedIn={isLoggedIn} 
-                />
-                
-              );
-            }}
-          />
+           
           <Route
             path="/profile"
             render={(props) => {
@@ -152,6 +153,7 @@ const App = (props) => {
                 <UserShow 
                 isLoggedIn={isLoggedIn} 
                 handleLogOut={handleLogOut} 
+                user={state}
                 />
                 
               );
@@ -181,12 +183,32 @@ const App = (props) => {
             }}
           />
           <Route
+            path="/restaurants/:id"
+            // component={RestaurantShow}
+            render={(props) => {
+              return (
+                <RestaurantShow isLoggedIn={isLoggedIn} user={state}  />
+              )
+            }}
+          />
+          <Route
             path="/restaurants"
             render={(props) => {
               return (
               <RestaurantList isLoggedIn={isLoggedIn} />
               )
 
+            }}
+          />
+          <Route
+            path="/"
+            render={(props) => {
+              return (
+                <Homepage 
+                isLoggedIn={isLoggedIn} 
+                />
+                
+              );
             }}
           />
         </Switch>
