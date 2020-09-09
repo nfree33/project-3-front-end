@@ -9,17 +9,21 @@ const RestaurantList = (props) => {
     async function fetchData() {
       const response = await axios.get("http://localhost:3001/api/restaurants");
       setRestaurants(response.data);
+      console.log(response.data)
     }
     fetchData();
-  }, [restaurants]);
+  }, []);
+
+
   const showRestaurants = restaurants.map((restaurant, i) => {
     return (
       <div key={i}>
-        <RestaurantShow restaurant={restaurant} isLoggedIn={props.isLoggedIn} />
-      </div>
+        <a href="/restaurants/:id"> <h1>{restaurant.name} </h1></a>
+        <img src={restaurant.image_url} alt={restaurant.name} className="restaurant-image" />      </div>
     );
   });
   return <div>{showRestaurants}</div>;
 };
 
 export default RestaurantList;
+

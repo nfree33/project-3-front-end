@@ -4,6 +4,7 @@ import axios from "axios";
 
 import NavBar from "./components/NavBar";
 import RestaurantList from "./components/RestaurantList";
+import RestaurantShow from "./components/RestaurantShow";
 import SignUpForm from "./components/SignUpForm";
 import LogInForm from "./components/LogInForm";
 import LogOut from "./components/LogOut";
@@ -21,6 +22,25 @@ const App = (props) => {
     isLoggedIn: false,
   });
 
+
+/////////// Took the below from RestaurantList.js. 
+///////////
+///////////
+  const [restaurants, setRestaurants] = useState([]);
+  useEffect(() => {
+    // Need to wrap this in an async function to use await inside:
+    async function fetchData() {
+      const response = await axios.get("http://localhost:3001/api/restaurants");
+      setRestaurants(response.data);
+      console.log(response.data)
+    }
+    fetchData();
+  }, []);
+///////////
+///////////
+///////////  
+  
+  
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
@@ -80,12 +100,12 @@ const App = (props) => {
       console.log(error);
       let userChoice;
       userChoice = prompt(`Are you already a member (yes) || (no)?`)
-      if (userChoice === 'yes'){
-          alert('Did you mistype your email?')
+      if (userChoice === 'yes') {
+        alert('Did you mistype your email?')
       }
-      else if (userChoice === 'no'){
-          alert(`Oh... Sign up then!`);
-          props.history.push('/signup');
+      else if (userChoice === 'no') {
+        alert(`Oh... Sign up then!`);
+        props.history.push('/signup');
       }
     }
   };
@@ -111,11 +131,11 @@ const App = (props) => {
             path="/logout"
             render={(props) => {
               return (
-                <LogOut 
-                isLoggedIn={isLoggedIn} 
-                handleLogOut={handleLogOut} 
+                <LogOut
+                  isLoggedIn={isLoggedIn}
+                  handleLogOut={handleLogOut}
                 />
-                
+
               );
             }}
           />
@@ -123,10 +143,10 @@ const App = (props) => {
             path="/allusers"
             render={(props) => {
               return (
-                <UserList 
-                isLoggedIn={isLoggedIn} 
+                <UserList
+                  isLoggedIn={isLoggedIn}
                 />
-                
+
               );
             }}
           />
@@ -134,11 +154,11 @@ const App = (props) => {
             path="/profile"
             render={(props) => {
               return (
-                <UserShow 
-                isLoggedIn={isLoggedIn} 
-                handleLogOut={handleLogOut} 
+                <UserShow
+                  isLoggedIn={isLoggedIn}
+                  handleLogOut={handleLogOut}
                 />
-                
+
               );
             }}
           />
@@ -146,10 +166,10 @@ const App = (props) => {
             path="/${_id}/edit"
             render={(props) => {
               return (
-                <UserEdit 
-                isLoggedIn={isLoggedIn} 
+                <UserEdit
+                  isLoggedIn={isLoggedIn}
                 />
-                
+
               );
             }}
           />
@@ -169,8 +189,23 @@ const App = (props) => {
             path="/restaurants"
             render={(props) => {
               return (
-              <RestaurantList isLoggedIn={isLoggedIn} />
+                <div>
+                  
+                  <h1>Your Collection of Restaurants</h1>
+                  <h3>Click the name to see that restuarants page!</h3>
+                <RestaurantList isLoggedIn={isLoggedIn} />
+                </div>
               )
+
+            }}
+          />
+          <Route
+            path="/restaurants/:id"
+            // component={RestaurantShow}
+            render={(props) => {
+              return (
+                <div>Welcome to the show page for!</div>
+                )
 
             }}
           />
