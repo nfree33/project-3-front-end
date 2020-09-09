@@ -18,7 +18,7 @@ function RestaurantShow(props) {
       setRestaurant(response.data);
     }
     fetchData();
-  }, [restaurant]);
+  }, [!restaurant]);
 
   const { name, address, likes, reviews, image_url } = restaurant;
   return (

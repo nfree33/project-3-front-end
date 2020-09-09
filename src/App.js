@@ -90,7 +90,7 @@ const App = (props) => {
       const decodedToken = JSON.parse(atob(response.data.token.split(".")[1]))
       setIsLoggedIn(true);
       setState({...state, id: decodedToken.id})
-      props.history.push('/restaurants');
+      props.history.push('/profile');
     } catch (error) {
       console.log(error);
       let userChoice;
@@ -195,7 +195,7 @@ const App = (props) => {
             path="/restaurants"
             render={(props) => {
               return (
-              <RestaurantList isLoggedIn={isLoggedIn} />
+              <RestaurantList isLoggedIn={isLoggedIn} user={state}/>
               )
 
             }}
