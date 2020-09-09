@@ -11,6 +11,9 @@ import LogOut from "./components/LogOut";
 import UserShow from "./components/UserShow";
 import UserList from "./components/UserList";
 import UserEdit from "./components/UserEdit";
+import Homepage from "./components/Homepage";
+
+
 import "./scss/styles.scss";
 
 
@@ -125,6 +128,17 @@ const App = (props) => {
             render={(props) => {
               return (
                 <UserList 
+                isLoggedIn={isLoggedIn} 
+                />
+                
+              );
+            }}
+          />
+           <Route
+            path="/"
+            render={(props) => {
+              return (
+                <Homepage 
                 isLoggedIn={isLoggedIn} 
                 />
                 
