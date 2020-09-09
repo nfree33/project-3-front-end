@@ -1,0 +1,38 @@
+body {
+    background:white;
+    color: black;
+}
+
+h1 {
+    text-align: center;
+}
+
+nav {
+    background: red;
+    padding: 0 2px 0 2px;
+    text-align: center;
+  }
+
+nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    font-size: 20px;
+  }
+  
+  nav a:hover {
+    color: white;
+    font-weight: 800;
+  }
+
+nav li {
+    display: inline-flex;
+    justify-content: space-evenly;
+    margin: 20px;
+    width: 100px;
+
+  }
+
+  nav ul {
+    margin: 0px;
+  }
