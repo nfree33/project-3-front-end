@@ -5,7 +5,7 @@ function UserShow(props) {
   const [user, setUser] = useState([]);
   
   console.log("======usershow component running======")
-
+  console.log(props)
   useEffect(() => {
     // Need to wrap this in an async function to use await inside:
     async function fetchData() {

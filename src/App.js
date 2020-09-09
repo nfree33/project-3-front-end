@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import NavBar from "./components/NavBar";
 import RestaurantList from "./components/RestaurantList";
+import RestaurantShow from "./components/RestaurantShow";
 import SignUpForm from "./components/SignUpForm";
 import LogInForm from "./components/LogInForm";
 import LogOut from "./components/LogOut";
@@ -179,6 +180,15 @@ const App = (props) => {
                   handleLogIn={handleLogIn}
                 />
               );
+            }}
+          />
+          <Route
+            path="/restaurants/:id"
+            // component={RestaurantShow}
+            render={(props) => {
+              return (
+                <RestaurantShow isLoggedIn={isLoggedIn} user={state}  />
+              )
             }}
           />
           <Route
