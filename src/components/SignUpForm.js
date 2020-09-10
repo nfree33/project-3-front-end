@@ -9,7 +9,7 @@ function SignUpForm(props) {
   return (
 
 
-    <Jumbotron className="jumbotron-2">
+    <Jumbotron className="jumbotron-3">
        <div >
        <h2>Join our Foodie Community!</h2>
        <div className="container-changes">

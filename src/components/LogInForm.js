@@ -5,7 +5,7 @@ function LogInForm(props) {
   return (
     
 
-      <Jumbotron className="jumbotron-2">
+      <Jumbotron className="jumbotron-3">
         <div>
       <h2>Log In to FOOdBAR</h2>
       <div className="container-changes">

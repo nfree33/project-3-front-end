@@ -49,7 +49,7 @@ const RestaurantList = (props) => {
   });
   return (
   <Container fluid>
-    <h1>Food and Bar Locations</h1>
+    <h1 style={{margin: 20}}>Food and Bar Locations</h1>
     <CardGroup className="user-card-group">
   {showRestaurants}
   </CardGroup>

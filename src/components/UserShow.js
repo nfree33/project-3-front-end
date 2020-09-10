@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Jumbotron from 'react-bootstrap/Button';
+
 
 function UserShow(props) {
   const [user, setUser] = useState([]);
@@ -18,11 +20,14 @@ function UserShow(props) {
 
   const { name, email, photo, password, favorites } = user;
   return (
-    <div className="user-preview">
+    <Jumbotron className="jumbotron-3">
+    <div className="user-preview container-changes-2">
+    <h1>{name}</h1>
       <img src={photo} alt={name} className="user-image" />
-      <h3>{name}</h3>
+    <h3>{email}</h3>
       {props.isLoggedIn ? <h4>Favorites: {favorites}</h4> : ""}
     </div>
+    </Jumbotron>
   );
 }
 
