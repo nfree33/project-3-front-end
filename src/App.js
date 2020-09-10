@@ -23,7 +23,8 @@ const App = (props) => {
     name: "",
     email: "",
     password: "",
-    id: ""
+    id: "",
+    favorites: [],
   });
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -33,7 +34,7 @@ const App = (props) => {
       setIsLoggedIn(true);
       // decode the token, grab the id out of it:
       const decodedToken = JSON.parse(atob(localStorage.token.split(".")[1]))
-      setState({...state, email: localStorage.email, id: decodedToken.id})
+      setState({...state, name: localStorage.name, email: localStorage.email, id: decodedToken.id})
     } else {
       setIsLoggedIn(false);
     }
@@ -43,7 +44,8 @@ const App = (props) => {
     setState({
       name: "",
       email: "",
-      password: ""
+      password: "",
+
     });
     setIsLoggedIn(false);
     localStorage.clear();
@@ -61,10 +63,12 @@ const App = (props) => {
         name: state.name,
         email: state.email,
         password: state.password,
+        favorites: state.favorites
       });
       console.log(response);
       localStorage.token = response.data.token;
       localStorage.email = state.email;
+      localStorage.favorites = state.favorites
       // decode the token, grab the id out of it:
       const decodedToken = JSON.parse(atob(response.data.token.split(".")[1]))
       setState({...state, id: decodedToken.id})
@@ -83,9 +87,11 @@ const App = (props) => {
       const response = await axios.post("http://localhost:3001/users/login", {
         email: state.email,
         password: state.password,
+        name: state.name,
       });
       localStorage.token = response.data.token;
       localStorage.email = state.email;
+      localStorage.name = state.name;
       // decode the token, grab the id out of it:
       const decodedToken = JSON.parse(atob(response.data.token.split(".")[1]))
       setIsLoggedIn(true);
@@ -187,7 +193,10 @@ const App = (props) => {
             // component={RestaurantShow}
             render={(props) => {
               return (
-                <RestaurantShow isLoggedIn={isLoggedIn} user={state}  />
+                <RestaurantShow 
+                  isLoggedIn={isLoggedIn} 
+                  handleLogIn={handleLogIn}
+                  user={state}  />
               )
             }}
           />
