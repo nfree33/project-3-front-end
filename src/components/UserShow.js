@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import {useParams, Link} from "react-router-dom";
 import axios from "axios";
 
 function UserShow(props) {
@@ -16,12 +17,28 @@ function UserShow(props) {
     fetchData();
   }, [!user]);
 
-  const { name, email, photo, password, favorites } = user;
+  const { name, email, photo, _id, password, favorites } = user;
   return (
     <div className="user-preview">
       <img src={photo} alt={name} className="user-image" />
       <h3>{name}</h3>
-      {props.isLoggedIn ? <h4>Favorites: {favorites}</h4> : ""}
+      <Link to={`/${_id}/edit`}><h3>Edit your Profile</h3></Link>
+      {/* <Link to={`/${_id}`}><button>Delete your Profile</button></Link>
+       */}
+      <form action={`/${_id}?_method=DELETE`} method="POST"><input type="submit" value="Delete Profile"/></form>
+      
+      
+      
+      
+      {props.isLoggedIn ? <h4>Favorites:</h4> : ""}
+      <ul>
+        {props.user.favorites?.map((restaurant)=>{
+          console.log(restaurant)
+          return (
+            <li>{restaurant.name}</li>
+            )
+          })}
+      </ul>
     </div>
   );
 }
