@@ -34,7 +34,7 @@ const UserList = (props) => {
         key={i}>
         <Card.Img variant="top" src={user.photo} alt="Add Profile Picture!" />
         <Card.Body>
-          <Card.Title>Name: {user.name}</Card.Title>
+          <Card.Title>{user.name}</Card.Title>
           <Card.Text>Email: {user.email} </Card.Text>
         </Card.Body>
       </Card>
@@ -42,7 +42,9 @@ const UserList = (props) => {
     );
   });
   return (
+
   <Container fluid>
+        <h1>Check out our members!</h1>
     <CardGroup className="user-card-group">
     {showUsers}
     </CardGroup>

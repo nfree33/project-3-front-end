@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import Jumbotron from 'react-bootstrap/Button';
 
 // import "./RestaurantShow.css";
 function RestaurantShow(props) {
@@ -78,14 +79,18 @@ function RestaurantShow(props) {
   const { name, address, likes, reviews, image_url } = restaurant;
   // const {_id, email, photo, password, favorites } = user;
   return (
-    <div className="restaurant-preview">
+    <Jumbotron className="jumbotron-3">
+    <div className="restaurant-preview container-changes-2">
+    <h1>{name}</h1>
       <img src={image_url} alt={name} className="restaurant-image" />
-      <h3>{name}</h3>
-      <button onClick={addToFavorites}>Add to Favorites</button>
+
+  
       {props.isLoggedIn ? <h4>Likes: {likes}</h4> : ""}
       {/* {props.isLoggedIn ? <h4>Reviews: {reviews.username}: {reviews.text}</h4> : ""} */}
-      {/* {props.isLoggedIn ? <h4>Address: {address}</h4> : ""} */}
+      {props.isLoggedIn ? <h4>Address: {address}</h4> : ""}
+      <button onClick={addToFavorites}>Add to Favorites</button>
     </div>
+    </Jumbotron>
   );
 }
 // console.log(username)
