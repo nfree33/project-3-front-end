@@ -172,15 +172,27 @@ nav li {
   justify-content: space-evenly;
 }
 
+.restaurant-card {
+  height: 300px;
+  width: 300px;
+  border: 2px solid #800000;
+  border-radius: 10px;
+  // background-color: #800000;
+  
+}
+
 .restaurant-image {
-  height: 150px;
+  height: 170px;
 }
 
 .restaurant-button {
-  font-size: 17px;
+  font-size: 20px;
   color: white;
   height: 40px;
+  width: 297px;
   background-color: #800000;
+  border-radius: 0px 0 5px 5px;
+  border: none;
 
 }
 
@@ -199,6 +211,29 @@ nav li {
             -1px -1px 10px #ddd,
             1px -1px 10px #ddd,
             -1px 1px 10px #ddd;
+
+}
+
+.container-changes-2 {
+
+  position: relative;
+  top: 5%;
+  margin: auto;
+  width: 50%;
+  background: #f9f9f9;
+  border-radius: 10px 10px 10px 10px;
+  padding: 10px;
+  box-sizing: border-box;
+  overflow: auto;
+  text-align: center;
+  box-shadow: 1px 1px 10px #ddd,
+            -1px -1px 10px #ddd,
+            1px -1px 10px #ddd,
+            -1px 1px 10px #ddd;
+
+  img {
+    height: 300px
+  }
 
 }
 
@@ -237,6 +272,44 @@ label {
   display: block;
 }
 
+
+.jumbotron-3 {
+  background-image:  
+  linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), 
+  url(/images/jumbotron.jpg);
+  width: 100%;
+  height: 800px;
+  position: relative;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  color:#800000;
+  text-align: center;
+  border: none;
+
+
+h1 {
+    font-family: 'Merienda', cursive;
+    font-size: 70px;
+}
+h4 {
+    font-size: 30px;
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+
+}
+    h1:hover {
+        color: black;
+    }
+    h4:hover {
+        color: black;
+    }
+
+}
+
+
+
+
 .jumbotron:hover {
   color: black;
 }
@@ -245,3 +318,6 @@ label {
   color: black;
 }
 
+.jumbotron-3:hover {
+  color:#800000;;
+}

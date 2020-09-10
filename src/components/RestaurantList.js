@@ -25,16 +25,17 @@ const RestaurantList = (props) => {
     return (
       <div>
         <Card key={i}
-        style={{ width: '18rem' }}
-        className="user-card card text-center m-2 ">
+        style={{ width: 300 }}
+        className="restaurant-card card text-center m-2 ">
         {/* <div className="restaurant-preview"> */}
             <Card.Img variant="top" src={image_url} alt={name} className="restaurant-image" />
             
             <Card.Body>
-              <Card.Text>{name}</Card.Text>
+            {/* <Card.Text style={{fontSize: 15}}>{name}</Card.Text> */}
+              <Card.Text style={{fontSize: 15}}>{address}</Card.Text>
               {/* <Card.Text></Card.Text> */}
             </Card.Body>
-            <button href={`/restaurants/${_id}`} className="restaurant-button"><p>{name}</p></button>
+            <Link to ={`/restaurants/${_id}`}> <button className="restaurant-button"><p>{name}</p></button></Link> 
           
 {/* 
             {props.isLoggedIn ? <h4>Likes: {likes}</h4> : ""}
