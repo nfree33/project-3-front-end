@@ -39,8 +39,29 @@ function RestaurantShow(props) {
   const addToFavorites = () => {
     console.log(restaurant)
     console.log('BELOW')
-    console.log(props.user.favorites)
-    props.user.favorites.push(restaurant)
+    // console.log(props.user.favorites)
+    // props.user.favorites.push(restaurant)
+    if (localStorage.favorites){
+      // Add restaurant to localStorage.favorites
+      // localStorage only supports strings, so to use an array, we need to
+      // JSON.stringify to store it, and JSON.parse, to retrieve it.
+      
+      // Get current favoriates and store it as an array:
+      const prevFavorites = JSON.parse(localStorage.favorites)
+
+      // add the new restaruant to the temporary favorites array:
+      let updatedFavorites = [...prevFavorites, restaurant]
+
+      // save it back to localStorage:
+      localStorage.favorites = JSON.stringify(updatedFavorites)
+      
+    } else {
+      localStorage.favorites = JSON.stringify([restaurant])
+      // create localStorage.favorites
+    }
+
+    // Update the state in App component so other pages can access it:
+    props.handleUpdateFavorites(restaurant)
     
 
     // if (props.isLoggedIn === true) {
