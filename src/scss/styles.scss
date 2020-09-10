@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Merienda&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
 
+* {
+  border: 1px solid gold;
+}
+
 body {
     background:#ebc8b2;
     // background: #6e757d;
@@ -98,8 +102,17 @@ nav li {
         font-size: 25px;
         text-align: center;
      }
+}
 
+.user-card {
+  height: 400px;
+  width: 100px;
+  border: 2px solid #800000;
+  border-radius: 10px;
+}
 
-
-
+.user-list {
+  display: flex;
+  text-wrap: wrap;
+  justify-content: space-evenly;
 }

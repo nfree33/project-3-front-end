@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import UserShow from "./UserShow";
+import Card from 'react-bootstrap/Card';
+import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
+import { CardGroup } from "react-bootstrap";
+
+
 
 const UserList = (props) => {
   console.log("=====UserList running======")
@@ -17,12 +23,23 @@ const UserList = (props) => {
     console.log(users)
   }, []);
 
+
+  
   const showUsers = users.map((user, i) => {
     return (
-      <div key={i}>
-        <h1>Name: {user.name}</h1>
-        <img src={user.photo} alt="Add Profile Picture!"/>
-      </div>
+      <Container className="user-list">
+        {/* <CardGroup> */}
+        <Card style={{ width: '18rem' }}
+        className= "user-card card text-center m-2 workcard" 
+        key={i}>
+          <Card.Img variant="top" src= {user.photo} alt="Add Profile Picture!"/>
+          <Card.Body>
+            <Card.Title>Name: {user.name}</Card.Title>
+            <Card.Text>Email: {user.email} </Card.Text>
+          </Card.Body>
+        </Card>
+      {/* </CardGroup> */}
+      </Container>
     );
   });
   return <div>{showUsers}</div>;
