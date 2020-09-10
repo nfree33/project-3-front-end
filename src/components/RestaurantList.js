@@ -14,6 +14,7 @@ const RestaurantList = (props) => {
     }
     fetchData();
   }, [restaurants]);
+  
   const showRestaurants = restaurants.map((restaurant, i) => {
     const { name, address, _id, likes, reviews, image_url } = restaurant;
     return (
@@ -21,6 +22,7 @@ const RestaurantList = (props) => {
         <div className="restaurant-preview">
             <img src={image_url} alt={name} className="restaurant-image" />
             <Link to={`/restaurants/${_id}`}><h3>{name}</h3></Link>
+
             {props.isLoggedIn ? <h4>Likes: {likes}</h4> : ""}
             {props.isLoggedIn ? <h4>Reviews: {reviews.username}: {reviews.text}</h4> : ""}
             

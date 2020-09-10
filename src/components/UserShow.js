@@ -14,7 +14,7 @@ function UserShow(props) {
       setUser(response.data);
     }
     fetchData();
-  }, [user]);
+  }, [!user]);
 
   const { name, email, photo, password, favorites } = user;
   return (
