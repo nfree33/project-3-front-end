@@ -78,7 +78,7 @@ const App = (props) => {
   const handleSignUp = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3001/users/signup", {
+      const response = await axios.post("https://foodbar-group-project.herokuapp.com/api/users/signup", {
         name: state.name,
         email: state.email,
         password: state.password,
@@ -108,7 +108,7 @@ const App = (props) => {
   const handleLogIn = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3001/users/login", {
+      const response = await axios.post("https://foodbar-group-project.herokuapp.com/api/users/login", {
         email: state.email,
         password: state.password,
         name: state.name,

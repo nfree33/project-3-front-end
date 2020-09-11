@@ -14,7 +14,7 @@ function RestaurantShow(props) {
   useEffect(() => {
     // Need to wrap this in an async function to use await inside:
     async function fetchData() {
-      const response = await axios.get(`http://localhost:3001/api/restaurants/${params.id}`);
+      const response = await axios.get(`https://foodbar-group-project.herokuapp.com/api/restaurants/${params.id}`);
       console.log("=====fetch restaurant====", response)
       setRestaurant(response.data);
     }
@@ -28,7 +28,7 @@ function RestaurantShow(props) {
   useEffect(() => {
     // Need to wrap this in an async function to use await inside:
     async function fetchData() {
-      const response = await axios.get(`http://localhost:3001/api/users/${props.user.id}`);
+      const response = await axios.get(`https://foodbar-group-project.herokuapp.com/api/users/${props.user.id}`);
       console.log("=====fetch====", response)
       setUser(response.data);
       console.log(props.user.id)

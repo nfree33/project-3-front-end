@@ -13,7 +13,7 @@ const UserList = (props) => {
   useEffect(() => {
     // Need to wrap this in an async function to use await inside:
     async function fetchData() {
-      const response = await axios.get("http://localhost:3001/api/users");
+      const response = await axios.get("https://foodbar-group-project.herokuapp.com/api/users");
       console.log("=====fetch====", response)
       setUsers(response.data);
     }
