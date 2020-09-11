@@ -82,12 +82,12 @@ const App = (props) => {
         name: state.name,
         email: state.email,
         password: state.password,
-        favorites: state.favorites
+        // favorites: state.favorites
       });
       console.log(response);
       localStorage.token = response.data.token;
       localStorage.email = state.email;
-      localStorage.favorites = state.favorites
+      // localStorage.favorites = state.favorites
       // decode the token, grab the id out of it:
       const decodedToken = JSON.parse(atob(response.data.token.split(".")[1]))
       setState({...state, id: decodedToken.id})
