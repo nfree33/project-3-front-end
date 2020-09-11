@@ -12,7 +12,7 @@ function UserShow(props) {
   useEffect(() => {
     // Need to wrap this in an async function to use await inside:
     async function fetchData() {
-      const response = await axios.get(`https://foodbar-group-project.herokuapp.com/api/users/${props.user.id}`);
+      const response = await axios.get(`https://foodbar-group-project.herokuapp.com/api/users/profile/${props.user.id}`);
       console.log("=====fetch====", response)
       setUser(response.data);
     }
