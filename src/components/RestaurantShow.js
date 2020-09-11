@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import Jumbotron from 'react-bootstrap/Button';
 
@@ -76,7 +76,7 @@ function RestaurantShow(props) {
 
 
 
-  const { name, address, likes, reviews, image_url } = restaurant;
+  const { name, _id, address, likes, reviews, image_url } = restaurant;
   // const {_id, email, photo, password, favorites } = user;
   return (
     <Jumbotron className="jumbotron-3">
@@ -89,6 +89,10 @@ function RestaurantShow(props) {
       {/* {props.isLoggedIn ? <h4>Reviews: {reviews.username}: {reviews.text}</h4> : ""} */}
       {props.isLoggedIn ? <h4>Address: {address}</h4> : ""}
       <button onClick={addToFavorites}>Add to Favorites</button>
+      <Link to={`edit/${_id}`}><h3>Edit Restaurant</h3></Link>
+
+      <form action={`/restaurant/${_id}?_method=DELETE`} method="POST"><input type="submit" value="Delete Restaurant"/></form>
+      
     </div>
     </Jumbotron>
   );

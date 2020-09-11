@@ -178,7 +178,7 @@ const App = (props) => {
               }}
           />
               <Route
-                path="/:id/edit"
+                path="/edit/:id"
                 render={(props) => {
                   return (
                     <UserEdit 
